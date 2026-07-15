@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SC Ranggen – Sportclub Ranggen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --scr-black:#0a0c0a;
+    --scr-green-dark:#0f3b1b;
+    --scr-green:#185c2b;
+    --scr-green-light:#2f8a4a;
+    --scr-paper:#ffffff;
+    --scr-paper-tint:#f0f5f1;
+    --max-w:1100px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--scr-paper);
+    color:var(--scr-black);
+    font-family:'Karla', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  h1,h2,h3,.eyebrow{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    font-weight:400;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:var(--max-w);margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--scr-black);
+    border-bottom:3px solid var(--scr-green);
+  }
+  .site-nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px 24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;color:var(--scr-paper);text-decoration:none;}
+  .brand img{height:44px;width:auto;}
+  .brand span{font-family:'Anton',sans-serif;font-weight:400;font-size:1.2rem;letter-spacing:0.03em;color:var(--scr-paper);}
+  nav.sections{display:flex;gap:4px;}
+  nav.sections a{
+    color:rgba(255,255,255,0.75);
+    text-decoration:none;
+    font-family:'Karla',sans-serif;font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:10px 14px;
+    border-radius:2px;
+    transition:background .2s, color .2s;
+  }
+  nav.sections a:hover, nav.sections a:focus-visible{
+    background:var(--scr-green-dark);
+    color:#fff;
+  }
+  @media (max-width:640px){
+    nav.sections{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:
+      linear-gradient(135deg, var(--scr-green-dark) 0 52%, var(--scr-black) 52% 100%);
+    color:#fff;
+    padding:72px 0 96px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    align-items:center;
+    gap:32px;
+    position:relative;
+    z-index:2;
+  }
+  .hero .eyebrow{
+    color:rgba(255,255,255,0.75);
+    font-size:0.85rem;
+    letter-spacing:0.18em;
+    margin:0 0 10px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    line-height:1.05;
+    margin:0 0 18px;
+    color:#fff;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--scr-green-light);
+  }
+  .hero p.lede{
+    max-width:46ch;
+    color:#e7ece7;
+    font-size:1.05rem;
+  }
+  .hero .cta-row{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:12px 22px;
+    font-family:'Karla',sans-serif;font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    font-size:0.85rem;
+    text-decoration:none;
+    border-radius:2px;
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--scr-green);color:#fff;}
+  .btn-primary:hover{background:var(--scr-green-light);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.75);color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.08);}
+
+  .hero-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:280px;}
+  .hero-art .glow{
+    position:absolute;
+    width:340px;height:340px;
+    background:radial-gradient(circle, rgba(47,138,74,0.55) 0%, rgba(47,138,74,0) 70%);
+    filter:blur(6px);
+    animation:greenGlowPulse 3.2s ease-in-out infinite;
+  }
+  .hero-art img{
+    position:relative;
+    width:min(420px, 100%);
+    filter:drop-shadow(0 8px 22px rgba(0,0,0,0.45));
+    animation:dragonFloat 6s ease-in-out infinite;
+  }
+  @keyframes greenGlowPulse{
+    0%,100%{opacity:0.55; transform:scale(1);}
+    50%{opacity:0.95; transform:scale(1.12);}
+  }
+  @keyframes dragonFloat{
+    0%,100%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-art .glow, .hero-art img{animation:none;}
+  }
+  @media (max-width:800px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{order:-1;min-height:220px;}
+    .hero-art img{width:260px;}
+  }
+
+  /* ---------- SECTION DIVIDER (Wappen-Diagonale als Signatur) ---------- */
+  .divider{
+    height:26px;
+    background:linear-gradient(115deg, var(--scr-green) 0 50%, var(--scr-black) 50% 100%);
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section.dept{
+    padding:64px 0;
+    background:var(--scr-paper);
+  }
+  section.dept:nth-of-type(even){background:#eceee9;}
+
+  .dept-header{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:8px;
+  }
+  .dept-tag{
+    font-family:'Karla',sans-serif;font-weight:700;
+    font-size:0.8rem;
+    letter-spacing:0.12em;
+    color:#fff;
+    background:var(--scr-green-dark);
+    padding:5px 12px;
+    clip-path:polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+  }
+  .dept h2{
+    font-size:clamp(1.6rem, 3vw, 2.2rem);
+    margin:0;
+    color:var(--scr-green-dark);
+  }
+  .dept-body{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:36px;
+    margin-top:24px;
+    align-items:start;
+  }
+  @media (max-width:760px){
+    .dept-body{grid-template-columns:1fr;}
+  }
+  .dept-body p{margin:0 0 14px;color:#333;}
+  .fact-card{
+    background:#fff;
+    border-left:4px solid var(--scr-green);
+    border-radius:2px;
+    padding:20px 22px;
+    box-shadow:0 1px 3px rgba(0,0,0,0.06);
+  }
+  .fact-card h3{
+    font-size:0.95rem;
+    margin:0 0 12px;
+    color:var(--scr-green-dark);
+  }
+  .fact-card dl{margin:0;font-size:0.92rem;}
+  .fact-card dt{color:#666;font-family:'Karla',sans-serif;text-transform:none;letter-spacing:0;font-weight:700;margin-top:10px;}
+  .fact-card dt:first-child{margin-top:0;}
+  .fact-card dd{margin:2px 0 0;}
+
+  .placeholder-note{
+    display:inline-block;
+    margin-top:14px;
+    font-size:0.78rem;
+    color:var(--scr-green-dark);
+    background:var(--scr-paper-tint);
+    border:1px dashed var(--scr-green);
+    padding:4px 10px;
+    border-radius:2px;
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background:var(--scr-black);
+    color:var(--scr-paper);
+    padding:56px 0 32px;
+  }
+  footer h2{color:#fff;font-size:1.6rem;margin-top:0;}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:24px;
+    margin:28px 0 40px;
+  }
+  .contact-grid .eyebrow{color:var(--scr-green-light);font-size:0.75rem;margin-bottom:6px;}
+  .contact-grid p{margin:0;color:#e7ece7;}
+  footer .bottom{
+    border-top:1px solid #26302a;
+    padding-top:20px;
+    font-size:0.82rem;
+    color:#8b968f;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="Wappen SC Ranggen">
+      <span>SC&nbsp;Ranggen</span>
+    </a>
+    <nav class="sections" aria-label="Sektionen">
+      <a href="#fussball">Fußball</a>
+      <a href="#stockschiessen">Stockschießen</a>
+      <a href="#damengymnastik">Damengymnastik</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Sportclub Ranggen · gegründet für den Ort, getragen vom Ort</p>
+      <h1>Drei Sektionen,<br><em>ein Verein.</em></h1>
+      <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Der SC Ranggen vereint Fußball, Stockschießen und Damengymnastik unter einem Dach – für Jung und Alt, das ganze Jahr über.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#fussball">Zu den Sektionen</a>
+        <a class="btn btn-ghost" href="#kontakt">Kontakt aufnehmen</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="glow" aria-hidden="true"></div>
+      <img src="assets/dragon.png" alt="Vereinsmaskottchen Drache">
+    </div>
+  </div>
+</section>
+
+<div class="divider" role="presentation"></div>
+
+<section class="dept" id="fussball">
+  <div class="wrap">
+    <div class="dept-header">
+      <span class="dept-tag">Sektion</span>
+      <h2>Fußball</h2>
+    </div>
+    <div class="dept-body">
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        <p>Nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <span class="placeholder-note">Platzhaltertext – wird noch durch echte Inhalte ersetzt</span>
+      </div>
+      <div class="fact-card">
+        <h3>Auf einen Blick</h3>
+        <dl>
+          <dt>Training</dt>
+          <dd>Lorem ipsum, Uhrzeit tbd</dd>
+          <dt>Ort</dt>
+          <dd>Sportplatz Ranggen</dd>
+          <dt>Ansprechpartner</dt>
+          <dd>N.N.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" role="presentation"></div>
+
+<section class="dept" id="stockschiessen">
+  <div class="wrap">
+    <div class="dept-header">
+      <span class="dept-tag">Sektion</span>
+      <h2>Stockschießen</h2>
+    </div>
+    <div class="dept-body">
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+        <span class="placeholder-note">Platzhaltertext – wird noch durch echte Inhalte ersetzt</span>
+      </div>
+      <div class="fact-card">
+        <h3>Auf einen Blick</h3>
+        <dl>
+          <dt>Training</dt>
+          <dd>Lorem ipsum, Uhrzeit tbd</dd>
+          <dt>Ort</dt>
+          <dd>Stockschützenbahn Ranggen</dd>
+          <dt>Ansprechpartner</dt>
+          <dd>N.N.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" role="presentation"></div>
+
+<section class="dept" id="damengymnastik">
+  <div class="wrap">
+    <div class="dept-header">
+      <span class="dept-tag">Sektion</span>
+      <h2>Damengymnastik</h2>
+    </div>
+    <div class="dept-body">
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
+        <p>Quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.</p>
+        <span class="placeholder-note">Platzhaltertext – wird noch durch echte Inhalte ersetzt</span>
+      </div>
+      <div class="fact-card">
+        <h3>Auf einen Blick</h3>
+        <dl>
+          <dt>Training</dt>
+          <dd>Lorem ipsum, Uhrzeit tbd</dd>
+          <dt>Ort</dt>
+          <dd>Gemeindesaal Ranggen</dd>
+          <dt>Ansprechpartner</dt>
+          <dd>N.N.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="kontakt">
+  <div class="wrap">
+    <h2>Kontakt</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="eyebrow">Obmann</p>
+        <p>Thomas Volina</p>
+      </div>
+      <div>
+        <p class="eyebrow">Telefon</p>
+        <p>+43 650 6358788</p>
+      </div>
+      <div>
+        <p class="eyebrow">E-Mail</p>
+        <p>volinathomas@aon.at</p>
+      </div>
+      <div>
+        <p class="eyebrow">Adresse</p>
+        <p>Hauptstraße 91<br>6179 Ranggen</p>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 SC Ranggen</span>
+      <span>Sektionen: Fußball · Stockschießen · Damengymnastik</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
