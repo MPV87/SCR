@@ -44,14 +44,27 @@
     position:sticky;top:0;z-index:50;
     background:var(--scr-black);
     border-bottom:3px solid var(--scr-green);
+    overflow:visible;
   }
   .site-nav .wrap{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:12px 24px;
+    position:relative;
+    display:flex;align-items:center;justify-content:flex-end;
+    padding:14px 24px;
+    min-height:40px;
   }
-  .brand{display:flex;align-items:center;gap:12px;color:var(--scr-paper);text-decoration:none;}
-  .brand img{height:44px;width:auto;}
-  .brand span{font-family:'Anton',sans-serif;font-weight:400;font-size:1.2rem;letter-spacing:0.03em;color:var(--scr-paper);}
+  .crest-badge{
+    position:absolute;
+    left:20px;
+    top:12px;
+    z-index:5;
+    width:clamp(88px, 10vw, 156px);
+    line-height:0;
+    filter:drop-shadow(0 14px 22px rgba(0,0,0,0.45));
+    transform:rotate(-6deg);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .crest-badge:hover{transform:rotate(-2deg) scale(1.05);}
+  .crest-badge img{width:100%;display:block;}
   nav.sections{display:flex;gap:4px;}
   nav.sections a{
     color:rgba(255,255,255,0.75);
@@ -260,15 +273,15 @@
 <body>
 
 <header class="site-nav">
+  <a class="crest-badge" href="#top" aria-label="SC Ranggen – zur Startseite">
+    <img src="assets/logo.png" alt="Wappen SC Ranggen">
+  </a>
   <div class="wrap">
-    <a class="brand" href="#top">
-      <img src="assets/logo.png" alt="Wappen SC Ranggen">
-      <span>SC&nbsp;Ranggen</span>
-    </a>
     <nav class="sections" aria-label="Sektionen">
       <a href="#fussball">Fußball</a>
       <a href="#stockschiessen">Stockschießen</a>
       <a href="#damengymnastik">Damengymnastik</a>
+      <a href="#wintersport">Wintersport</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
   </div>
@@ -380,6 +393,35 @@
   </div>
 </section>
 
+<div class="divider" role="presentation"></div>
+
+<section class="dept" id="wintersport">
+  <div class="wrap">
+    <div class="dept-header">
+      <span class="dept-tag">Sektion</span>
+      <h2>Wintersport</h2>
+    </div>
+    <div class="dept-body">
+      <div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium tincidunt lacus, sed porttitor metus rutrum et. Sed diam turpis, molestie vitae mattis nec, tincidunt vel augue.</p>
+        <p>Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna, sed consequat leo eleifend.</p>
+        <span class="placeholder-note">Platzhaltertext – wird noch durch echte Inhalte ersetzt</span>
+      </div>
+      <div class="fact-card">
+        <h3>Auf einen Blick</h3>
+        <dl>
+          <dt>Aktivitäten</dt>
+          <dd>Lorem ipsum, tbd</dd>
+          <dt>Ort</dt>
+          <dd>tbd</dd>
+          <dt>Ansprechpartner</dt>
+          <dd>N.N.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer id="kontakt">
   <div class="wrap">
     <h2>Kontakt</h2>
@@ -403,7 +445,7 @@
     </div>
     <div class="bottom">
       <span>© 2026 SC Ranggen</span>
-      <span>Sektionen: Fußball · Stockschießen · Damengymnastik</span>
+      <span>Sektionen: Fußball · Stockschießen · Damengymnastik · Wintersport</span>
     </div>
   </div>
 </footer>
